@@ -1,0 +1,32 @@
+ /* Adicione estilos conforme necessário */
+ body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    background-color: #333;
+    overflow: hidden;
+    display: flex;
+    flex-grow: 8;
+}
+
+nav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 1% 1.2%;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.calculator-container {
+    padding: 2%;
+}

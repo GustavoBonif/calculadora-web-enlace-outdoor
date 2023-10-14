@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Enlace Outdoor</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="script/script.js"></script>
+</head>
+<body>
+<header>
+    <h1>Calculadora de Enlace Outdoor</h1>
+
+    <nav id="">
+        <a href="#" onclick="showCalculator('shannon')">Shannon</a>
+        <a href="#" onclick="showCalculator('nyquist')">Nyquist</a>
+        <a href="#" onclick="showCalculator('eirp')">EIRP</a>
+        <a href="#" onclick="showCalculator('fslp')">FSLP</a>
+        <a href="#" onclick="showCalculator('rsl')">RSL</a>
+        <a href="#" onclick="showCalculator('fresnelZone')">Fresnel Zone</a>
+        <a href="#" onclick="showCalculator('conversionMWdBm')">Conversão mW para dBm</a>
+        <a href="#" onclick="showCalculator('conversiondBmMW')">Conversão dBm para mW</a>
+    </nav>
+</header>
+
+<div class="calculator-container" id="shannon">
+    <h2>Shannon Calculation</h2>
+    <form id="shannonForm">
+        <label for="bandwidth">Largura de Banda (Hz): </label>
+        <input type="number" id="bandwidth" name="bandwidth" required>
+        <br>
+        <label for="snr">Relação Sinal-Ruído (dB): </label>
+        <input type="number" id="snr" name="snr" required>
+
+        <button type="button" onclick="calculateShannon()">Calcular</button>
+    </form>
+
+    <p>Cálculo: Largura de banda (Hz) * log<sub>2</sub>(1+ Sinal-Ruído)</p>
+
+    <p id="shannonResult"></p>
+</div>
+
+<div class="calculator-container" id="nyquist" style="display: none;">
+    <h2>Nyquist Calculation</h2>
+    <form id="nyquistForm">
+        <label for="signalBandwidth">Largura de Banda do Sinal (Hz): </label>
+        <input type="number" id="signalBandwidth" name="signalBandwidth" required>
+
+        <label for="modulation">Modulação Multinível: </label>
+        <input type="number" id="modulation" name="modulation" required>
+
+        <button type="button" onclick="calculateNyquist()">Calcular</button>
+    </form>
+
+    <p id="nyquistResult"></p>
+</div>
+
+<div class="calculator-container" id="conversionMWdBm" style="display: none;">
+    <h2>Conversão de mW para dBm</h2>
+    <form id="conversionMWdBmForm">
+        <label for="powerMW">Potência em mW: </label>
+        <input type="number" id="powerMW" name="powerMW" required>
+
+        <button type="button" onclick="convertMWtodBm()">Converter</button>
+    </form>
+
+    <p id="conversionMWdBmResult"></p>
+</div>
+
+<div class="calculator-container" id="conversiondBmMW" style="display: none;">
+    <h2>Conversão de dBm para mW</h2>
+    <form id="conversiondBmMWForm">
+        <label for="powerdBm">Potência em dBm: </label>
+        <input type="number" id="powerdBm" name="powerdBm" required>
+
+        <button type="button" onclick="convertdBmtoMW()">Converter</button>
+    </form>
+
+    <p id="conversiondBmMWResult"></p>
+</div>
+
+<div class="calculator-container" id="eirp" style="display: none;">
+    <h2>Cálculo de EIRP</h2>
+    <form id="eirpForm">
+        <label for="transmissionPower">Potência de Transmissão (dBm): </label>
+        <input type="number" id="transmissionPower" name="transmissionPower" required>
+
+        <label for="antennaGain">Ganho da Antena (dBi): </label>
+        <input type="number" id="antennaGain" name="antennaGain" required>
+
+        <label for="cableLoss">Perdas no Cabo (dB): </label>
+        <input type="number" id="cableLoss" name="cableLoss" required>
+
+        <button type="button" onclick="calculateEIRP()">Calcular</button>
+    </form>
+
+    <p id="eirpResult"></p>
+</div>
+
+<div class="calculator-container" id="fslp" style="display: none;">
+    <h2>Cálculo de FSLP (Free Space Loss Path)</h2>
+    <form id="fslpForm">
+        <label for="distance">Distância (Km): </label>
+        <input type="number" id="distance" name="distance" required>
+
+        <label for="frequency">Frequência (MHz): </label>
+        <input type="number" id="frequency" name="frequency" required>
+
+        <button type="button" onclick="calculateFSLP()">Calcular</button>
+    </form>
+
+    <p id="fslpResult"></p>
+</div>
+
+<div class="calculator-container" id="rsl" style="display: none;">
+    <h2>Cálculo de RSL (Received Signal Level)</h2>
+    <form id="rslForm">
+        <label for="transmissionPowerRSL">Potência de Transmissão (dBm): </label>
+        <input type="number" id="transmissionPowerRSL" name="transmissionPowerRSL" required>
+
+        <label for="antennaGainTX">Ganho da Antena TX (dBi): </label>
+        <input type="number" id="antennaGainTX" name="antennaGainTX" required>
+
+        <label for="cableLossTX">Perdas no Cabo TX (dB): </label>
+        <input type="number" id="cableLossTX" name="cableLossTX" required>
+
+        <label for="freeSpaceLossPath">Free Space Loss Path (dB): </label>
+        <input type="number" id="freeSpaceLossPath" name="freeSpaceLossPath" required>
+
+        <label for="antennaGainRX">Ganho da Antena RX (dBi): </label>
+        <input type="number" id="antennaGainRX" name="antennaGainRX" required>
+
+        <label for="cableLossRX">Perdas no Cabo RX (dB): </label>
+        <input type="number" id="cableLossRX" name="cableLossRX" required>
+
+        <button type="button" onclick="calculateRSL()">Calcular</button>
+    </form>
+
+    <p id="rslResult"></p>
+</div>
+
+<div class="calculator-container" id="fresnelZone" style="display: none;">
+    <h2>Cálculo do Raio da Zona de Fresnel</h2>
+    <form id="fresnelZoneForm">
+        <label for="transmitterDistance">Distância até o Obstáculo (DAO) (m): </label>
+        <input type="number" id="transmitterDistance" name="transmitterDistance" required>
+
+        <label for="receiverDistance">Distância além do Obstáculo (DBO) (m): </label>
+        <input type="number" id="receiverDistance" name="receiverDistance" required>
+
+        <label for="frequencyFresnel">Frequência (MHz): </label>
+        <input type="number" id="frequencyFresnel" name="frequencyFresnel" required>
+
+        <label for="linkDistance">Distância entre Transmissor e Receptor (D) (m): </label>
+        <input type="number" id="linkDistance" name="linkDistance" required>
+
+        <button type="button" onclick="calculateFresnelZone()">Calcular</button>
+    </form>
+
+    <p id="fresnelZoneResult"></p>
+</div>
+
+</body>
+</html>
