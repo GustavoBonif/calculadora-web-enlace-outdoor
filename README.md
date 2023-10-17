@@ -1,6 +1,7 @@
 # Desenvolvimento de Ferramenta Web para Planejamento de Enlaces Outdoor
 ## Disciplina: Redes Sem Fio. 
-Inclui os cálculos: Shannon, 
+Inclui os cálculos: 
+- Shannon;
 - Nyquist;
 - EIRP;
 - FSLP;
