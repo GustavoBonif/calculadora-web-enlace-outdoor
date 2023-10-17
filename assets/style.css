@@ -1,5 +1,4 @@
- /* Adicione estilos conforme necessário */
- body {
+body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -27,6 +26,6 @@ nav a:hover {
     color: black;
 }
 
-.calculator-container {
+.area-calculo {
     padding: 2%;
 }
