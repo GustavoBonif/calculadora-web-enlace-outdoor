@@ -25,7 +25,7 @@ function calcularNyquist() {
 }
 
 function calcularEIRP() {
-    let potenciaTransmissao = parseFloat(document.getElementById('potenciaTransmissao').value);
+    let potenciaTransmissao = parseFloat(document.getElementById('potenciaTransmissaoEIRP').value);
     let ganhoAntena = parseFloat(document.getElementById('ganhoAntena').value);
     let perdaCabo = parseFloat(document.getElementById('perdaCabo').value);
     let eirp = potenciaTransmissao + ganhoAntena - perdaCabo;
@@ -42,7 +42,7 @@ function calcularFSLP() {
 }
 
 function calcularRSL() {
-    let potenciaTransmissao = parseFloat(document.getElementById('potenciaTransmissao').value);
+    let potenciaTransmissao = parseFloat(document.getElementById('potenciaTransmissaoRSL').value);
     let ganhoAntenaTrans = parseFloat(document.getElementById('ganhoAntenaTrans').value);
     let perdaCaboTX = parseFloat(document.getElementById('perdaCaboTX').value);
     let perdaEspacoLivre = parseFloat(document.getElementById('perdaEspacoLivre').value);
@@ -76,4 +76,3 @@ function converterdBmparaMW() {
     
     document.getElementById('resultadodBmparaMW').innerHTML = `Potência em mW: ${valorMW.toFixed(2)} mW`;
 }
-
