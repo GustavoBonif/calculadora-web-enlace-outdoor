@@ -11,7 +11,7 @@ function exibirCalculo(formulaSelecionada) {
 function calcularShannon() {
     let larguraBanda = parseFloat(document.getElementById('larguraBanda').value);
     let sinalRuido = parseFloat(document.getElementById('sinalRuido').value);
-    let capMaxCanal = larguraBanda * Math.log2(1 + sinalRuido);
+    let capMaxCanal = larguraBanda * Math.log2(1 + Math.pow(10, sinalRuido / 10));
 
     document.getElementById('resultadoShannon').innerHTML = `Capacidade Máxima de Canal: ${capMaxCanal.toFixed(2)} bps`;
 }
@@ -59,6 +59,10 @@ function calcularFresnelZone() {
     let distanciaEnlace = parseFloat(document.getElementById('distanciaEnlace').value);
     let frequencia = parseFloat(document.getElementById('frequenciaFresnel').value);
     let raioZonaFresnel = 550 * Math.sqrt((distanciaTransmissor * distanciaRecebedor) / (distanciaEnlace * frequencia));
+
+    if(frequencia < 3000) {
+        raioZonaFresnel *= 0.6;
+    }
     
     document.getElementById('resultadoZonaFresnel').innerHTML = `Raio da Zona de Fresnel: ${raioZonaFresnel.toFixed(2)} m`;
 }
