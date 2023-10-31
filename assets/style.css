@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #568EA3;
+    background-color: #fff;
     min-height: 100vh;
 }
 
@@ -85,6 +85,6 @@ body {
 }
 
 .area-calculo button:hover {
-    background-color: #F29559;
+    background-color: #6cb672;
     color: black;
 }
